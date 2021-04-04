@@ -34,7 +34,7 @@ export default {
           (record) => record.recordid == this.id
         );
         if (eventWithId.length > 0) {
-          this.event = response.data.records[0];
+          this.event = eventWithId[0];
           this.isLoading = false;
         }
       })
