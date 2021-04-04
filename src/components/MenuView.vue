@@ -27,7 +27,7 @@
       <div class="navbar-start">
         <router-link class="navbar-item" to="/"> Accueil </router-link>
 
-        <router-link class="navbar-item" to="/agenda"> Agenda </router-link>
+        <router-link class="navbar-item" to="/events"> Agenda des évènements </router-link>
       </div>
     </div>
   </nav>

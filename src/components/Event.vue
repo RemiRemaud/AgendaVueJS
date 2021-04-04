@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      image: "./assets/event.png",
+      image: "../assets/event.png",
     };
   },
   computed: {

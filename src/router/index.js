@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
-import Agenda from '../components/Agenda.vue'
+import ListEvents from '../components/ListEvents.vue'
+import EventDetailPage from '../components/EventDetailPage.vue'
 
 const routes = [
   {
@@ -9,9 +10,15 @@ const routes = [
     component: HomePage
   },
   {
-    path:'/agenda',
-    name: 'Agenda',
-    component: Agenda
+    path: '/event-detail/:id',
+    name: 'EventDetails',
+    props: true,
+    component: EventDetailPage
+  },
+  {
+    path:'/events',
+    name: 'ListEvents',
+    component: ListEvents
   }
 ]
 
