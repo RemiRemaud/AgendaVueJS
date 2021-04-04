@@ -3,10 +3,10 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          Agenda des évènements de la ville de Nantes !
+          Agenda des évènements de la ville de Nantes
         </h1>
         <h2 class="subtitle">
-          Découvrez les évènements les plus proches de chez vous !!
+          Accédez aux évènements proche de chez vous !
         </h2>
       </div>
     </div>
