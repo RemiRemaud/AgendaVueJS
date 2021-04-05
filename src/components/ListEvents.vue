@@ -6,6 +6,7 @@
       :key="event.id"
       class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
       :event="event"
+      :userLocation="currentUserLocation"
       @click="showEventDetails(event)"
     />
   </div>
@@ -15,6 +16,8 @@
 <script>
 import Event from "./Event.vue";
 import axios from "axios";
+import { Plugins } from "@capacitor/core";
+const { Geolocation } = Plugins;
 
 export default {
   name: "EventsList",
@@ -27,6 +30,7 @@ export default {
       events: new Array(),
       isDetailPage: false,
       rechercheEvent: new Array(),
+      currentUserLocation: { latitude: 0, longitude: 0 },
     };
   },
   mounted() {
@@ -40,6 +44,10 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+      });
+
+      Geolocation.getCurrentPosition().then((location) => {
+        this.currentUserLocation = location.coords;
       });
   },
   methods: {

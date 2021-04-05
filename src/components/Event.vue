@@ -40,6 +40,16 @@
             {{ event.fields.date }} : {{ event.fields.heure_debut }}
           </p>
 
+          <h3 v-if="userLocation && userLocation.latitude != 0">
+            {{
+              calcDistance(
+                userLocation.latitude,
+                userLocation.longitude,
+                event.fields.location
+              )
+            }}km
+          </h3>
+
           <a :href="event.fields.lien_agenda" target="out">
             <button class="button is-link is-outlined">
               Consulter site web
@@ -68,12 +78,8 @@ export default {
   name: "Event",
   props: {
     event: {},
-    isDetailPage: Boolean,
+    userLocation: {},
   },
-  created: function () {
-            console.log('user data from parent component:')
-            console.log(this.isDetailPage) //prints out an empty string
-        },
   data() {
     return {
       image: "../assets/event.png",
@@ -83,10 +89,35 @@ export default {
     googleMapsLink() {
       return (
         "https://maps.google.com/?q=" +
-        this.event.fields.location[0] +
-        "," +
-        this.event.fields.location[1]
+        this.event.fields.location
       );
+    },
+  },
+  methods: {
+    //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+    calcDistance(lat1, lon1, coord) {
+      var R = 6371; // km
+      var tab = coord.split(",");
+      var lat2 = tab[0];
+      var lon2 = tab [1];
+      var dLat = this.toRad(lat2 - lat1);
+      var dLon = this.toRad(lon2 - lon1);
+      lat1 = this.toRad(lat1);
+      lat2 = this.toRad(lat2);
+
+      var a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLon / 2) *
+          Math.sin(dLon / 2) *
+          Math.cos(lat1) *
+          Math.cos(lat2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      var d = R * c;
+      return Math.round(d);
+    },
+    // Converts numeric degrees to radians
+    toRad(Value) {
+      return (Value * Math.PI) / 180;
     },
   },
 };
