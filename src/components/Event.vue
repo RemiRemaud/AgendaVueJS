@@ -11,6 +11,14 @@
           event.fields.annule.indexOf('ui') > -1,
       }"
     >
+      <div class="card-image has-text-centered">
+        <figure class="image is-256x256 is-inline-block">
+          <img
+            :src = event.fields.media_url
+            :alt = image
+          />
+        </figure>
+      </div>
       <div class="card-content">
         <div class="media">
           <div class="media-content">
@@ -28,20 +36,18 @@
           <p v-if="event.fields.adresse.indexOf('.')">
             {{ event.fields.adresse }} 
           </p>
-
-          <p v-if="isDetailPage">
-            Bonjour
+          <p> 
+            {{ event.fields.date }} : {{ event.fields.heure_debut }}
           </p>
-          <p v-else>aaaaa</p>
 
-          <a :href="event.fields.lien" target="out">
-            <button class="button is-primary">
+          <a :href="event.fields.lien_agenda" target="out">
+            <button class="button is-link is-outlined">
               Consulter site web
             </button>
           </a>
           <br />
           <a :href="googleMapsLink" target="out">
-            <button class="button is-info">
+            <button class="button is-link is-outlined">
               Ouvrir dans Google Maps
             </button>
           </a>

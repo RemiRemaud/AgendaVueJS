@@ -1,5 +1,6 @@
 <template>
   <div class="columns is-multiline">
+    <input class="input is-medium"  type="text"  v-on:keyup="searchEvent" v-model="recherche" placeholder="Rechercher un évènement">
     <Event
       v-for="event in events"
       :key="event.id"
@@ -25,6 +26,7 @@ export default {
       nextEventId: 1,
       events: new Array(),
       isDetailPage: false,
+      rechercheEvent: new Array(),
     };
   },
   mounted() {
@@ -34,6 +36,7 @@ export default {
       )
       .then((response) => {
         this.events = response.data.records;
+        this.rechercheEvent = response.data.records;
       })
       .catch((error) => {
         console.log(error);
@@ -45,6 +48,25 @@ export default {
         name: "EventDetails",
         params: { id: event.recordid },
       });
+    },
+    searchEvent:function(){
+      if(this.recherche != ""){
+        this.events = this.rechercheEvent.filter(event=>{
+                          return event.fields.nom.toLowerCase().includes(this.recherche.toLowerCase());
+                        }
+                  );
+      }else{
+        axios
+        .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_agenda-evenements-nantes-nantes-metropole&q=&rows=100"
+      )
+      .then((response) => {
+        this.events = response.data.records;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      }
     },
   },
 };

@@ -1,8 +1,21 @@
 <template>
-  <div >
+  <div>
     <h1 class="title is-2">Détails de l'évènement</h1>
-    <Event v-if="!isLoading" :event="event" />
-    <p v-else>Chargement en cours...</p>
+    <div>
+        <Event v-if="!isLoading" :event="event" />
+        <p v-else>Chargement en cours...</p>
+    </div>
+    <div class="field has-addons">
+        <v-btn
+            class="button is-primary is-rounded control has-icons-right"
+            @click="$router.go(-1)"
+        >
+            <span class="icon is-left is-small">
+                <i class="fas fa-lock"></i>
+            </span>
+            Retour à la liste d'évènements
+        </v-btn>
+    </div>
   </div>
 </template>
 
