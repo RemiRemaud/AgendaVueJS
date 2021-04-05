@@ -51,6 +51,12 @@
               Ouvrir dans Google Maps
             </button>
           </a>
+          <br />
+          <a :href="$router" target="out">
+            <button class="button is-link is-outlined">
+              Ajouter aux favoris
+            </button>
+          </a>
         </div>
       </div>
     </div>
