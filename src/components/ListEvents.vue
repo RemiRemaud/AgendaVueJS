@@ -24,6 +24,7 @@ export default {
     return {
       nextEventId: 1,
       events: new Array(),
+      isDetailPage: false,
     };
   },
   mounted() {
@@ -40,7 +41,6 @@ export default {
   },
   methods: {
     showEventDetails(event) {
-      alert(event.recordid)
       this.$router.push({
         name: "EventDetails",
         params: { id: event.recordid },

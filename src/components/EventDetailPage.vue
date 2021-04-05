@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Détails de l'évènement {{ id }}</h1>
+  <div >
+    <h1 class="title is-2">Détails de l'évènement</h1>
     <Event v-if="!isLoading" :event="event" />
     <p v-else>Chargement en cours...</p>
   </div>
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      isDetailPage: true,
       event: {},
     };
   },

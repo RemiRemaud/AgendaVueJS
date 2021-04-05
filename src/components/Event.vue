@@ -1,12 +1,18 @@
 <template>
   <div class="event">
+    <div
+      class="card"
+      :class="{
+        'event-normal':
+          event.fields.annule.indexOf('on') > -1,
+        'event-report':
+          event.fields.reporte.indexOf('ui') > -1,
+        'event-cancel':
+          event.fields.annule.indexOf('ui') > -1,
+      }"
+    >
       <div class="card-content">
         <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img :src="image" v-on:mouseover="removeFirstOpeningSchedule" />
-            </figure>
-          </div>
           <div class="media-content">
             <p class="title is-4">{{ event.fields.nom }}</p>
             <p class="subtitle is-6">{{ event.fields.rubrique }}</p>
@@ -17,9 +23,16 @@
           <p>
             {{ event.fields.ville }} <br />
             {{ event.fields.lieu_quartier }} <br />
-            {{ event.fields.adresse }} <br />
             {{ event.fields.lieu }}
           </p>
+          <p v-if="event.fields.adresse.indexOf('.')">
+            {{ event.fields.adresse }} 
+          </p>
+
+          <p v-if="isDetailPage">
+            Bonjour
+          </p>
+          <p v-else>aaaaa</p>
 
           <a :href="event.fields.lien" target="out">
             <button class="button is-primary">
@@ -35,6 +48,7 @@
         </div>
       </div>
     </div>
+  </div>  
 </template>
 
 <script>
@@ -42,7 +56,12 @@ export default {
   name: "Event",
   props: {
     event: {},
+    isDetailPage: Boolean,
   },
+  created: function () {
+            console.log('user data from parent component:')
+            console.log(this.isDetailPage) //prints out an empty string
+        },
   data() {
     return {
       image: "../assets/event.png",
@@ -64,5 +83,17 @@ export default {
 <style scoped>
 .event {
   padding: 10px;
+}
+.event-normal {
+  background-color: #a5ec6a;
+  margin: 10px;
+}
+.event-report {
+  background-color: #ffbe32;
+  margin: 10px;
+}
+.event-cancel {
+  background-color: #ff0000;
+  margin: 10px;
 }
 </style>
