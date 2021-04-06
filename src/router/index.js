@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
 import ListEvents from '../components/ListEvents.vue'
 import EventDetailPage from '../components/EventDetailPage.vue'
+import Favoris from '../components/Favoris.vue'
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     path:'/events',
     name: 'ListEvents',
     component: ListEvents
+  },
+  {
+    path:'/favoris',
+    name: 'Favoris',
+    props: true,
+    component: Favoris
   }
 ]
 

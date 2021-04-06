@@ -8,6 +8,17 @@
     <div class="field has-addons">
         <v-btn
             class="button is-primary is-rounded control has-icons-right"
+            @click="showFavoris()"
+        >
+            <span class="icon is-left is-small">
+                <i class="fas fa-lock"></i>
+            </span>
+            Ajouter aux favoris ! 
+        </v-btn>
+    </div>
+    <div class="field has-addons">
+        <v-btn
+            class="button is-primary is-rounded control has-icons-right"
             @click="$router.go(-1)"
         >
             <span class="icon is-left is-small">
@@ -22,6 +33,7 @@
 <script>
 import Event from "./Event.vue";
 import axios from "axios";
+import {ArrayOfId} from "../variables/variables.js"
 
 export default {
   name: "EventDetailPage",
@@ -33,7 +45,16 @@ export default {
       isLoading: true,
       isDetailPage: true,
       event: {},
+      fav: new Array(),
     };
+  },
+  methods: {
+    showFavoris() {
+       ArrayOfId.push(this.id)
+       this.$router.push({
+        name: 'Favoris'
+      });
+    }
   },
   components: {
     Event,
