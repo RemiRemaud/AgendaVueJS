@@ -1,4 +1,5 @@
 <template>
+
   <div class="event">
     <div
       class="card"
@@ -79,6 +80,7 @@ export default {
   props: {
     event: {},
     userLocation: {},
+    localNotification: {},
   },
   data() {
     return {
