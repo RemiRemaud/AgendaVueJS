@@ -1,7 +1,6 @@
 <template>
   <div class="columns is-multiline">
     <input class="input is-medium"  type="text"  v-on:keyup="searchEvent" v-model="recherche" placeholder="Rechercher un évènement">
-    <button @click="localNotifs()"> Test </button>
     <Event
       v-for="event in events"
       :key="event.id"
@@ -19,7 +18,7 @@ import Event from "./Event.vue";
 import axios from "axios";
 import { Plugins } from "@capacitor/core";
 const { Geolocation } = Plugins;
-const { LocalNotifications } = Plugins;
+
 
 export default {
   name: "EventsList",
@@ -57,20 +56,6 @@ export default {
       this.$router.push({
         name: "EventDetails",
         params: { id: event.recordid },
-      });
-    },
-    async localNotifs(){
-      await LocalNotifications.requestPermission();
-      await LocalNotifications.schedule({
-        notifications: [{
-          title: 'Un évènement a lieu bientôt: ',
-          body: 'Ne le ratez surtout pas !',
-          id: '1',
-          extra:{
-            data: '',
-          },
-          iconColor: '#0000FF',
-        }]
       });
     },
     searchEvent:function(){

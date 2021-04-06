@@ -34,6 +34,8 @@
 import Event from "./Event.vue";
 import axios from "axios";
 import {ArrayOfId} from "../variables/variables.js"
+import { Plugins } from "@capacitor/core";
+const { LocalNotifications } = Plugins;
 
 export default {
   name: "EventDetailPage",
@@ -51,8 +53,19 @@ export default {
   methods: {
     showFavoris() {
        ArrayOfId.push(this.id)
+       this.localNotifs()
        this.$router.push({
         name: 'Favoris'
+      });
+    },
+    async localNotifs(){
+      await LocalNotifications.requestPermission();
+      await LocalNotifications.schedule({
+        notifications: [{
+          title: 'Evènement ajouté aux favoris',
+          body: 'N\'oubliez pas votre masque et le respect des consignes sanitaires !',
+          id: '1',
+        }]
       });
     }
   },
