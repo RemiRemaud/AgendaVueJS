@@ -28,6 +28,7 @@
         <router-link class="navbar-item" to="/"> Accueil </router-link>
 
         <router-link class="navbar-item" to="/events"> Agenda des évènements </router-link>
+
       </div>
     </div>
   </nav>
