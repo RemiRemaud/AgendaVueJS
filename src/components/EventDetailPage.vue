@@ -50,11 +50,9 @@ export default {
   },
   methods: {
     showFavoris() {
-       // this.fav.push(this.id)
-      ArrayOfId.push(this.id)
+       ArrayOfId.push(this.id)
        this.$router.push({
-        name: 'Favoris',
-        params: { pref: ArrayOfId },
+        name: 'Favoris'
       });
     }
   },

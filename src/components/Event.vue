@@ -51,7 +51,6 @@
               Ouvrir dans Google Maps
             </button>
           </a>
-          <br />
         </div>
       </div>
     </div>

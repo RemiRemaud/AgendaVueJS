@@ -29,6 +29,8 @@
 
         <router-link class="navbar-item" to="/events"> Agenda des évènements </router-link>
 
+        <router-link class="navbar-item" to="/favoris"> Favoris </router-link>
+
       </div>
     </div>
   </nav>
