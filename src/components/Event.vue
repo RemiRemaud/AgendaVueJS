@@ -1,6 +1,7 @@
 <template>
 
   <div class="event">
+    <!-- Code couleur des évenements -->
     <div
       class="card"
       :class="{
@@ -12,6 +13,7 @@
           event.fields.annule.indexOf('ui') > -1,
       }"
     >
+      <!-- Affichage d'un évenement -->
       <div class="card-image has-text-centered">
         <figure class="image is-256x256 is-inline-block">
           <img
@@ -82,6 +84,7 @@ export default {
     };
   },
   computed: {
+    // permet de construire l'adresse de GoogleMap
     googleMapsLink() {
       return (
         "https://maps.google.com/?q=" +
