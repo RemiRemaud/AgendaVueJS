@@ -25,10 +25,13 @@
 
     <div class="navbar-menu" :class="{ 'is-active': mobileMenuActive }">
       <div class="navbar-start">
+        <!--Bouton Accueil qui nous redirige via le router vers la HomePage.vue-->
         <router-link class="navbar-item" to="/"> Accueil </router-link>
 
+        <!--Bouton Agenda des événements qui nous redirige via le router vers la ListEvents.vue-->
         <router-link class="navbar-item" to="/events"> Agenda des évènements </router-link>
 
+        <!--Bouton Favoris qui nous redirige via le router vers la Favoris.vue-->
         <router-link class="navbar-item" to="/favoris"> Favoris </router-link>
 
       </div>
