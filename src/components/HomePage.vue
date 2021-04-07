@@ -3,7 +3,7 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          Agenda des évènements de la ville de Nantes
+          Agenda des événements de la ville de Nantes
         </h1>
         <!-- Image d'accueil -->
         <div class="card-image has-text-centered">
