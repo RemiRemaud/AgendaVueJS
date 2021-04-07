@@ -1,30 +1,27 @@
 <template>
   <div>
-    <h1 class="title is-2">Détails de l'évènement</h1>
+    <h1 class="title is-2">Détails de l'événement</h1>
     <div>
+        <!-- Affichage du détail de l'événement si il ne charge pas -->
         <Event v-if="!isLoading" :event="event" />
         <p v-else>Chargement en cours...</p>
     </div>
     <div class="field has-addons">
+        <!-- Bouton d'ajout de favoris -->
         <v-btn
             class="button is-primary is-rounded control has-icons-right"
             @click="showFavoris()"
         >
-            <span class="icon is-left is-small">
-                <i class="fas fa-lock"></i>
-            </span>
             Ajouter aux favoris ! 
         </v-btn>
     </div>
     <div class="field has-addons">
+        <!-- Bouton pour retourner à la page précédente -->
         <v-btn
             class="button is-primary is-rounded control has-icons-right"
             @click="$router.go(-1)"
         >
-            <span class="icon is-left is-small">
-                <i class="fas fa-lock"></i>
-            </span>
-            Retour à la liste d'évènements
+            Retour à la liste d'événements
         </v-btn>
     </div>
   </div>
@@ -51,6 +48,7 @@ export default {
     };
   },
   methods: {
+    // Redirige vers la page 
     showFavoris() {
        ArrayOfId.push(this.id)
        this.localNotifs()
@@ -58,6 +56,7 @@ export default {
         name: 'Favoris'
       });
     },
+    // Affiche une notifs si l'on appuie sur le bouton d'ajout de favoris
     async localNotifs(){
       await LocalNotifications.requestPermission();
       await LocalNotifications.schedule({
@@ -73,6 +72,7 @@ export default {
     Event,
   },
   mounted() {
+    // Appel à l'API et filtrage sur les événements pour récupérer l'événement sur lequel on a cliqué
     axios
       .get(
         "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_agenda-evenements-nantes-nantes-metropole&q=&rows=100"
